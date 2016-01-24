@@ -2,13 +2,16 @@ var compliments = {
 	complimentLocation: '.compliment',
 	currentCompliment: '',
 	complimentList: {
+		'birthday': config.compliments.birthday,
+		'christmas': config.compliments.christmas,
 		'morning': config.compliments.morning,
 		'afternoon': config.compliments.afternoon,
 		'evening': config.compliments.evening
 	},
 	updateInterval: config.compliments.interval || 30000,
 	fadeInterval: config.compliments.fadeInterval || 4000,
-	intervalId: null
+	intervalId: null,
+	birthdayList: keys.birthdays
 };
 
 /**
@@ -16,17 +19,32 @@ var compliments = {
  */
 compliments.updateCompliment = function () {
 
-
-
 	var _list = [];
 
 	var hour = moment().hour();
-
-	// In the followign if statement we use .slice() on the
+	var dateDay = moment().date();
+	var dateMonth = moment().month() + 1;	//moment().month() returns 0-11, we need to change that to 1-12
+	var birthdayToday = false;
+	var count = this.birthdayList.length;
+	
+	// In the following if statement we use .slice() on the
 	// compliments array to make a copy by value. 
 	// This way the original array of compliments stays in tact.
 
-	if (hour >= 3 && hour < 12) {
+	for (var i = 0; i < count; i++) {
+		if(dateDay == this.birthdayList[i].day && dateMonth == this.birthdayList[i].month){
+			birthdayToday = true;
+			var birthdayName = this.birthdayList[i].name;
+		};
+	}
+
+	if (birthdayToday) {
+		// Birthday compliments
+		_list = compliments.complimentList['birthday'].slice();
+	} else if (dateDay == 25 && dateMonth == 12) {
+		// Christmas compliments
+		_list = compliments.complimentList['christmas'].slice();
+	} else if (hour >= 3 && hour < 12) {
 		// Morning compliments
 		_list = compliments.complimentList['morning'].slice();
 	} else if (hour >= 12 && hour < 17) {
@@ -37,10 +55,8 @@ compliments.updateCompliment = function () {
 		_list = compliments.complimentList['evening'].slice();
 	} else {
 		// Edge case in case something weird happens
-		// This will select a compliment from all times of day
-		Object.keys(compliments.complimentList).forEach(function (_curr) {
-			_list = _list.concat(compliments.complimentList[_curr]).slice();
-		});
+		// Just reuse evening
+		_list = compliments.complimentList['evening'].slice();
 	}
 
 	// Search for the location of the current compliment in the list
@@ -53,9 +69,14 @@ compliments.updateCompliment = function () {
 
 	// Randomly select a location
 	var _randomIndex = Math.floor(Math.random() * _list.length);
-	compliments.currentCompliment = _list[_randomIndex];
-
-	$('.compliment').updateWithText(compliments.currentCompliment, compliments.fadeInterval);
+	
+	if(birthdayToday){
+		compliments.currentCompliment = _list[_randomIndex] + birthdayName + '!';
+	} else{
+		compliments.currentCompliment = _list[_randomIndex];
+	}	
+	
+	$(this.complimentLocation).updateWithText(compliments.currentCompliment, compliments.fadeInterval);
 
 }
 

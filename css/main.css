@@ -1,3 +1,6 @@
+/*Simple reset*/
+* {margin: 0; padding: 0;}
+
 body, html {
 	background: #000;
 	padding: 0px;
@@ -12,8 +15,13 @@ body, html {
 	font-size: 75px;
 	 -webkit-font-smoothing: antialiased;
 }
+
+canvas {
+	display: block;
+}
+
 .wi {
-	line-height: 75px;
+	line-height: 65px;
 
 }
 
@@ -71,7 +79,7 @@ body, html {
 {
 	font-size: 15px;
 	letter-spacing: 0px;
-	font-family: "HelveticaNeue-Medium";
+	/*font-family: "HelveticaNeue-Medium";*/
 }
 .xxsmall .wi {
 	line-height: 15px;
@@ -81,7 +89,7 @@ body, html {
 {
 	font-size: 20px;
 	letter-spacing: 0px;
-	font-family: "HelveticaNeue-Medium";
+	/*font-family: "HelveticaNeue-Medium";*/
 }
 .xsmall .wi {
 	line-height: 20px;
@@ -92,7 +100,7 @@ body, html {
 {
 	font-size: 25px;
 	letter-spacing: 0px;
-	font-family: "HelveticaNeue-Medium";
+	/*font-family: "HelveticaNeue-Medium";*/
 }
 .small .wi {
 	line-height: 25px;
@@ -101,8 +109,8 @@ body, html {
 .medium
 {
 	font-size: 35px;
-	letter-spacing: -1px;
-	font-family: "HelveticaNeue-Light";
+	letter-spacing: 0px;
+	/*font-family: "HelveticaNeue-Light";*/
 }
 .medium .wi {
 	line-height: 35px;
@@ -115,7 +123,12 @@ body, html {
 
 .dimmed
 {
-	color: #aaa;
+	color: #bbb;
+}
+
+.underlined
+{
+	text-decoration: underline;
 }
 
 .light
@@ -146,7 +159,7 @@ body, html {
 
 .time .sec {
 	font-size: 25px;
-	color: #666;
+	color: #aaa;
 	padding-left: 5px;
 	position: relative;
 	top: -35px;
@@ -164,34 +177,42 @@ body, html {
 	text-align: right;
 }
 
-.forecast-table .temp-max 
-{
+.forecast-table .temp-max {
 	width: 60px;
 }
 
-.forecast-table .day
-{
+.forecast-table .day {
 	color: #999;
 }
 
+.feelsliketemp {
+	font-size: 20px;
+	letter-spacing: 0px;
+	/*font-family: "HelveticaNeue-Medium";*/
+}
+
+.feelsliketemp .padding {
+	padding-bottom: 15px;
+}
+
 .calendar-table {
-	font-size: 14px;
+	font-size: 20px;
 	line-height: 20px;
 	margin-top: 10px;
+	font-family: "HelveticaNeue-Light";
+	padding-top: 5px;
+}
+.calendar-table .description {
+	padding-right: 10px;
+	text-align: left;
 }
 .calendar-table .days {
 	padding-left: 20px;
 	text-align: right;
 }
-
-.dishwasher {
-	background-color: white;
-	color: black;
-	margin: 0 200px;	
-	font-size: 60px;	
-	border-radius: 1000px;
-	border-radius: 1200px;
-	display: none;
+.calendar-table .leaveby {
+	padding-left: 20px;
+	text-align: left;
 }
 
 @font-face {

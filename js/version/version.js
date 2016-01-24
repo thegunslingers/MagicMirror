@@ -10,7 +10,12 @@ version.checkVersion = function () {
 
 	$.ajax({
 		type: 'GET',
+<<<<<<< HEAD
 		url: 'controllers/hash.php',
+=======
+		url: 'githash.php',
+		dataType: 'json',
+>>>>>>> 91dcac4bc1a1da2eb9059828872633afb8690ef0
 		success: function (data) {
 			// The githash variable is located in index.php
 			if (data && data.gitHash !== gitHash) {
