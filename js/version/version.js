@@ -1,7 +1,7 @@
 var version = {
 	updateInterval: 600000,
 	intervalId: null
-}
+};
 
 /**
  * Checks the version and refreshes the page if a new version has been pulled
@@ -10,7 +10,8 @@ version.checkVersion = function () {
 
 	$.ajax({
 		type: 'GET',
-		url: 'controllers/hash.php',
+		url: 'githash.php',
+		dataType: 'json',
 		success: function (data) {
 			// The githash variable is located in index.php
 			if (data && data.gitHash !== gitHash) {
@@ -23,7 +24,7 @@ version.checkVersion = function () {
 		}
 	});
 
-}
+};
 
 version.init = function () {
 
@@ -31,4 +32,4 @@ version.init = function () {
 		this.checkVersion();
 	}.bind(this), this.updateInterval);
 
-}
+};

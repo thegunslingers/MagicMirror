@@ -6,16 +6,16 @@ var news = {
 	newsLocation: '.news',
 	newsItems: [],
 	seenNewsItem: [],
-	_yqURL: 'https://query.yahooapis.com/v1/public/yql',
+	_yqURL: 'http://query.yahooapis.com/v1/public/yql',
 	_yqlQS: '?format=json&q=select%20*%20from%20rss%20where%20url%3D',
 	_cacheBuster: Math.floor((new Date().getTime()) / 1200 / 1000),
 	_failedAttempts: 0,
 	fetchInterval: config.news.fetchInterval || 60000,
-	updateInterval: config.news.interval || 5500,
+	updateInterval: config.news.interval || 7500,
 	fadeInterval: 2000,
 	intervalId: null,
 	fetchNewsIntervalId: null
-}
+};
 
 /**
  * Creates the query string that will be used to grab a converted RSS feed into a JSON object via Yahoo
@@ -26,7 +26,7 @@ news.buildQueryString = function (feed) {
 
 	return this._yqURL + this._yqlQS + '\'' + encodeURIComponent(feed) + '\'';
 
-}
+};
 
 /**
  * Fetches the news for each feed provided in the config file
@@ -43,7 +43,7 @@ news.fetchNews = function () {
 
 	}.bind(this));
 
-}
+};
 
 /**
  * Runs a GET request to Yahoo's service
@@ -70,7 +70,7 @@ news.fetchFeed = function (yqUrl) {
 		}
 	});
 
-}
+};
 
 /**
  * Parses each item in a single news feed
@@ -91,7 +91,7 @@ news.parseFeed = function (data) {
 
 	return true;
 
-}
+};
 
 /**
  * Loops through each available and unseen news feed after it has been retrieved from Yahoo and shows it on the screen
@@ -128,7 +128,7 @@ news.showNews = function () {
 
 	return true;
 
-}
+};
 
 news.init = function () {
 
@@ -143,10 +143,10 @@ news.init = function () {
 
 	this.fetchNewsIntervalId = setInterval(function () {
 		this.fetchNews()
-	}.bind(this), this.fetchInterval)
+	}.bind(this), this.fetchInterval);
 
 	this.intervalId = setInterval(function () {
 		this.showNews();
 	}.bind(this), this.updateInterval);
 
-}
+};
