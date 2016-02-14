@@ -15,20 +15,20 @@ time.updateTime = function () {
 		_date = _now.format('dddd, LL');
 
 	$(this.dateLocation).html(_date);
-	$(this.timeLocation).html(_now.format(this.timeFormat+':mm[<span class="sec">]ss[</span>]'));
+	$(this.timeLocation).html(_now.format(this._timeFormat+':mm[<span class="sec">]ss[</span>]'));
 
-};
+}
 
 time.init = function () {
 
 	if (parseInt(time.timeFormat) === 12) {
-		time.timeFormat = 'h'
+		time._timeFormat = 'hh'
 	} else {
-		time.timeFormat = 'H';
+		time._timeFormat = 'HH';
 	}
 
 	this.intervalId = setInterval(function () {
 		this.updateTime();
 	}.bind(this), 1000);
 
-};
+}
