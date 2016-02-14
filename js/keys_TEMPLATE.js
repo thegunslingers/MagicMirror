@@ -2,17 +2,9 @@
 
 var keys = {
     weather: {
-        //change weather params here:
-        //units: metric or imperial
-        params: {
-            id: 'YOUR_CITY_ID',
-            // Search for your city at http://openweathermap.org/find, and the City ID is the number at the end of the URL you're directed to
-            units: 'imperial',
-            // if you want a different lang for the weather that what is set above, change it here
-            lang: 'en',
-            APPID: 'YOUR_OPENWEATHER_API_KEY'
-            // To get your OpenWeather API key, go to http://www.openweathermap.org/news/post/get-api-key-access-weather-api/
-        }
+		apiKey: 'YOUR_API_KEY',
+		//Go to https://developer.forecast.io/ to register and get your free API key
+		address: 'YOUR_HOME_ADDRESS'
     },
 	traffic: {
 		params: {
@@ -25,10 +17,21 @@ var keys = {
 		}
 	},
 	calendar: {
-        maximumEntries: 10,
-        url: "CALENDAR.ics ADDRESS"
-        // For Google Calendar, it's the 'Private Address' under Calendar Settings when viewing your Calendar
-    },
+		maximumEntries: 10, // Total Maximum Entries
+		displaySymbol: true,
+		defaultSymbol: 'calendar', // Fontawsome Symbol see http://fontawesome.io/cheatsheet/
+		urls: [
+			{
+				symbol: 'calendar-o',
+				url: 'CALENDAR.ics ADDRESS'
+				// For Google Calendar, it's the 'Private Address' under Calendar Settings when viewing your Calendar
+			},
+			{
+				symbol: 'calendar-check-o',
+				url: 'CALENDAR.ics ADDRESS'
+			}
+		]
+	},
 	birthdays: [
 		{
 			day:DAY_OF_FIRST_BIRTHDAY,

@@ -1,74 +1,88 @@
 var config = {
-    lang: 'nl',
+    lang: 'en',
     time: {
         timeFormat: 12
     },
-	// Choose to display a 'quote' (rotating quotes of the day), 'compliment' (from the list below), 'both', or 'none' (show neither)
-    display: 'quote',
-    weather: {
-        //change weather params here:
-        //units: metric or imperial
-        params: {
-            q: 'Baarn,Netherlands',
-            units: 'metric',
-            // if you want a different lang for the weather that what is set above, change it here
-            lang: 'nl',
-            APPID: 'YOUR_FREE_OPENWEATHER_API_KEY'
-        }
-    },
     compliments: {
-        interval: 30000,
+        interval: 60000,
         fadeInterval: 4000,
         morning: [
-            'Good morning, handsome!',
+			'<i class="fa-5x fa-hand-peace-o"></i>',
+			'Good morning!',
             'Enjoy your day!',
-            'How was your sleep?'
+            'You look great today!',
+			'I like your style!',
+			'I like your socks!',
+			'Hello, good-looking!',
+			'I like your face!',
+			'I dig your look!',
+			'You light up the room!'
+			
         ],
         afternoon: [
-            'Hello, beauty!',
-            'You look sexy!',
-            'Looking good today!'
+            'You look nice!',
+            'You look terrific!',
+            "You're not a total idiot!",
+			'Well done!',
+			'Nice fine motor control!',
+			'Your skin is radiant!',
+			'Killer boots, man!',
+			'You look symmetrical!',
+			"You're sweeter than High Fructose Corn Syrup!",
+			'Nice job on that thing you did that time!',
+			'That color is perfect on you!'
+			
         ],
         evening: [
-            'Wow, you look hot!',
-            'You look nice!',
-            'Hi, sexy!'
+			'You have great taste in mirrors!',
+            'Your face makes other people look ugly!',
+			'Your hair looks stunning!',
+			'You could survive a Zombie apocalypse. Maybe.',
+			'Reading IS fundamental!',
+			'Dogs love you! Some of them. Some dogs are dumb though, so...',
+			'The Force is strong with you',
+			'I was talking to the toilet. He said you have a nice butt.',
+			'Dogs, better than people, since forever'
+        ],
+		bedtime: [
+			'Sweet dreams!',
+			'Good Night',
+			'See you tomorrow!',
+			'Sleep tight',
+			'Sleep well!'
+		],
+        birthday: [
+			'<i class="fa-3x fa-birthday-cake"></i><br>Happy Birthday ',
+            'Happy Birthday ',
+            'Have a great birthday today ',
+            'Yay, your birthday is today, '
+        ],
+        christmas: [
+            'Merry Christmas!',
+            '¡Feliz Navidad!',
+            'Nollaig Shona Duit!',
+			'Happy Christmas!'
         ]
-    },
-    calendar: {
-        maximumEntries: 10, // Total Maximum Entries
-		displaySymbol: true,
-		defaultSymbol: 'calendar', // Fontawsome Symbol see http://fontawesome.io/cheatsheet/
-        urls: [
-		{
-			symbol: 'calendar-plus-o', 
-			url: 'https://p01-calendarws.icloud.com/ca/subscribe/1/n6x7Farxpt7m9S8bHg1TGArSj7J6kanm_2KEoJPL5YIAk3y70FpRo4GyWwO-6QfHSY5mXtHcRGVxYZUf7U3HPDOTG5x0qYnno1Zr_VuKH2M'
-		},
-		{
-			symbol: 'soccer-ball-o',
-			url: 'https://www.google.com/calendar/ical/akvbisn5iha43idv0ktdalnor4%40group.calendar.google.com/public/basic.ics',
-		},
-		// {
-			// symbol: 'mars',
-			// url: "https://server/url/to/his.ics",
-		// },
-		// {
-			// symbol: 'venus',
-			// url: "https://server/url/to/hers.ics",
-		// },
-		// {
-			// symbol: 'venus-mars',
-			// url: "https://server/url/to/theirs.ics",
-		// },
-		]
+
     },
     news: {
-        feed: 'http://www.nytimes.com/services/xml/rss/nyt/HomePage.xml'
+        feed: [
+			'http://feeds.reuters.com/reuters/healthNews',
+			'http://feeds.reuters.com/reuters/oddlyEnoughNews',
+			'http://feeds.reuters.com/Reuters/domesticNews',
+			'http://feeds.reuters.com/Reuters/worldNews'
+		]
     },
-	quote: {
-        // fadeInterval: 4000,
-		fetchInterval: 3700000,
-		updateInterval: 20000,
-		feed: 'http://feeds.feedburner.com/theysaidso/qod'
+	traffic: {
+		active: true,
+		regular: false,			//Regular is true if you work a consistent schedule and want traffic displayed before work, false if you want your commute displayed all the time
+		weekStart: 1,
+		weekEnd: 5,				//Day of the week, Sunday = 0, etc
+		startTimeHour: 7, 		//Hour of the day you at which you start work, in 24H format
+		startTimeMinute: 0, 	//Minute of the day you at which you start work
+		preTime: 3				//How many hours before work you'd like to see traffic info
+	},
+	calendar: {
+		traffic: true
 	}
-}
+};
